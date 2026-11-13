@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "versionName": "1.0.0",
+  "apiUrl": "https://uwpdever.github.io/YMusicSite/flacapi.json",
+  "updateTime": "2026-11-12",
+  "description": "初始可用 FLAC 解析 API 节点池与公共鉴权凭据配置"
+}
+
