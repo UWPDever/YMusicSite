@@ -1,38 +1,66 @@
 {
-  "version": 1,
-  "versionName": "1.0.0",
-  "updatedAt": "2026-11-12",
-  "description": "当前可用 Qobuz FLAC/Hi-Res 无损流媒体解析端点与鉴权凭据",
+  "version": 2,
+  "versionName": "2.0.0",
+  "updatedAt": "2026-11-17",
+  "description": "FLAC/Hi-Res lossless streaming resolver configuration with dynamic JSONPath resolution engine and arcod.xyz stream endpoints",
+  "streamResolvers": [
+    {
+      "id": "arcod-quality",
+      "name": "Arcod Player Stream API (Specified Quality)",
+      "enabled": true,
+      "priority": 1,
+      "urlTemplate": "https://arcod.xyz/api/player/stream/{track_id}?quality={quality}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*"
+      },
+      "responseType": "json",
+      "urlJsonPath": "url",
+      "mimeTypeJsonPath": "mimeType",
+      "qualityJsonPath": "quality"
+    },
+    {
+      "id": "arcod-default",
+      "name": "Arcod Player Stream API (Default)",
+      "enabled": true,
+      "priority": 2,
+      "urlTemplate": "https://arcod.xyz/api/player/stream/{track_id}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*"
+      },
+      "responseType": "json",
+      "urlJsonPath": "url",
+      "mimeTypeJsonPath": "mimeType",
+      "qualityJsonPath": "quality"
+    }
+  ],
   "anandServer": {
     "baseUrl": "https://qobuz.anandserver.cfd",
     "apiKey": "ak_8e3f1a7c2b5d9e4f0a6c3b8d1e5f2a9c7b4d0e6f"
   },
-  "proxyNodes": [
-    "https://qobuz.anandserver.cfd",
-    "http://127.0.0.1:8000",
-    "http://localhost:8000",
-    "http://127.0.0.1:5000"
-  ],
   "credentials": [
     {
       "appId": "798273057",
       "appSecret": "abb21364945c0583309667d13ca3d93a",
-      "description": "Web Player 8.3 生产环境主密钥"
+      "description": "Web Player 8.3 Production Primary App Key"
     },
     {
       "appId": "798273057",
       "appSecret": "f69a7734686cb9427629378a4b7ac381",
-      "description": "Web Player 8.3 备用密钥"
+      "description": "Web Player 8.3 Backup App Key"
     },
     {
       "appId": "285473059",
       "appSecret": "47249d0eaefa6bf43a959c09aacdbce8",
-      "description": "Kodi / upmpdcli 客户端专用密钥"
+      "description": "Kodi / upmpdcli Dedicated App Key"
     },
     {
       "appId": "712109809",
-      "appSecret": "05a4851e74ee47fda346f50cfdfc4f09",
-      "description": "公开开放 API Key (音库检索)"
+      "appSecret": "589be88e4538daea11f509d29e4a23b1",
+      "description": "Open Qobuz Official Primary App Key (30s preview and catalog search)"
     }
   ],
   "communityTokens": [
@@ -50,4 +78,3 @@
     "https://qobuz.anandserver.cfd/api/stream/{track_id}?api_key=ak_8e3f1a7c2b5d9e4f0a6c3b8d1e5f2a9c7b4d0e6f"
   ]
 }
-
