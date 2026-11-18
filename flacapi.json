@@ -7,8 +7,8 @@
     {
       "id": "arcod-quality",
       "name": "Arcod Player Stream API (Specified Quality)",
-      "enabled": true,
-      "priority": 1,
+      "enabled": false,
+      "priority": 10,
       "urlTemplate": "https://arcod.xyz/api/player/stream/{track_id}?quality={quality}",
       "method": "GET",
       "headers": {
@@ -23,8 +23,8 @@
     {
       "id": "arcod-default",
       "name": "Arcod Player Stream API (Default)",
-      "enabled": true,
-      "priority": 2,
+      "enabled": false,
+      "priority": 11,
       "urlTemplate": "https://arcod.xyz/api/player/stream/{track_id}",
       "method": "GET",
       "headers": {
