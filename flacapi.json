@@ -1,14 +1,50 @@
 {
-  "version": 2,
-  "versionName": "2.0.0",
-  "updatedAt": "2026-11-17",
-  "description": "FLAC/Hi-Res lossless streaming resolver configuration with dynamic JSONPath resolution engine and arcod.xyz stream endpoints",
+  "version": 3,
+  "versionName": "3.0.0",
+  "updatedAt": "2026-11-18",
+  "description": "FLAC/Hi-Res lossless streaming resolver configuration with universal dynamic JSONPath/Regex resolution engine and anti-429 pre-flight health probing",
   "streamResolvers": [
+    {
+      "id": "anand-direct-strict24",
+      "name": "Anand Direct VIP Stream (Hi-Res 24-Bit / Strict)",
+      "enabled": true,
+      "priority": 1,
+      "urlTemplate": "https://qobuz.anandserver.cfd/api/stream/{track_id}?strict_24=1&api_key={api_key}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+        "Accept": "audio/flac, audio/*, */*",
+        "Referer": "https://open.qobuz.com/",
+        "Origin": "https://open.qobuz.com",
+        "X-API-Key": "{api_key}"
+      },
+      "responseType": "direct",
+      "timeoutMs": 6000,
+      "requireProbe": true
+    },
+    {
+      "id": "anand-direct-standard",
+      "name": "Anand Direct VIP Stream (Standard Lossless)",
+      "enabled": true,
+      "priority": 2,
+      "urlTemplate": "https://qobuz.anandserver.cfd/api/stream/{track_id}?api_key={api_key}",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36",
+        "Accept": "audio/flac, audio/*, */*",
+        "Referer": "https://open.qobuz.com/",
+        "Origin": "https://open.qobuz.com",
+        "X-API-Key": "{api_key}"
+      },
+      "responseType": "direct",
+      "timeoutMs": 6000,
+      "requireProbe": true
+    },
     {
       "id": "arcod-quality",
       "name": "Arcod Player Stream API (Specified Quality)",
       "enabled": false,
-      "priority": 10,
+      "priority": 20,
       "urlTemplate": "https://arcod.xyz/api/player/stream/{track_id}?quality={quality}",
       "method": "GET",
       "headers": {
@@ -16,15 +52,18 @@
         "Accept": "application/json, text/plain, */*"
       },
       "responseType": "json",
-      "urlJsonPath": "url",
+      "urlJsonPath": "url|data.url|stream_url|download_url",
+      "fileSizeJsonPath": "size|file_size|length|data.size",
       "mimeTypeJsonPath": "mimeType",
-      "qualityJsonPath": "quality"
+      "qualityJsonPath": "quality",
+      "timeoutMs": 8000,
+      "requireProbe": true
     },
     {
       "id": "arcod-default",
       "name": "Arcod Player Stream API (Default)",
       "enabled": false,
-      "priority": 11,
+      "priority": 21,
       "urlTemplate": "https://arcod.xyz/api/player/stream/{track_id}",
       "method": "GET",
       "headers": {
@@ -32,9 +71,12 @@
         "Accept": "application/json, text/plain, */*"
       },
       "responseType": "json",
-      "urlJsonPath": "url",
+      "urlJsonPath": "url|data.url|stream_url|download_url",
+      "fileSizeJsonPath": "size|file_size|length|data.size",
       "mimeTypeJsonPath": "mimeType",
-      "qualityJsonPath": "quality"
+      "qualityJsonPath": "quality",
+      "timeoutMs": 8000,
+      "requireProbe": true
     }
   ],
   "anandServer": {
