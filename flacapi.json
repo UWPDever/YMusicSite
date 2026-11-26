@@ -1,8 +1,8 @@
 {
-  "version": 5,
-  "versionName": "5.0.0",
+  "version": 6,
+  "versionName": "6.0.0",
   "updatedAt": "2026-11-26",
-  "description": "FLAC/Hi-Res lossless streaming resolver configuration with array-ordered streamResolvers prioritizing arcod.xyz",
+  "description": "FLAC/Hi-Res lossless streaming resolver configuration with array-ordered streamResolvers prioritizing arcod.xyz (single-stream without pre-probe)",
   "streamResolvers": [
     {
       "id": "arcod-quality",
@@ -21,7 +21,7 @@
       "mimeTypeJsonPath": "mimeType",
       "qualityJsonPath": "quality",
       "timeoutMs": 8000,
-      "requireProbe": true
+      "requireProbe": false
     },
     {
       "id": "arcod-default",
@@ -40,7 +40,7 @@
       "mimeTypeJsonPath": "mimeType",
       "qualityJsonPath": "quality",
       "timeoutMs": 8000,
-      "requireProbe": true
+      "requireProbe": false
     }
   ]
 }
