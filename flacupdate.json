@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "versionName": "3.0.0",
-  "apiUrl": "https://uwpdever.github.io/YMusicSite/flacapi.json",
-  "updateTime": "2026-11-17",
-  "description": "Upgrade to support arcod.xyz lossless stream resolution and dynamic JSONPath parsing rules"
-}
