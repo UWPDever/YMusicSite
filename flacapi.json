@@ -1,8 +1,8 @@
 {
-  "version": 6,
-  "versionName": "6.0.0",
+  "version": 7,
+  "versionName": "7.0.0",
   "updatedAt": "2026-11-26",
-  "description": "FLAC/Hi-Res lossless streaming resolver configuration with array-ordered streamResolvers prioritizing arcod.xyz (single-stream without pre-probe)",
+  "description": "FLAC/Hi-Res lossless streaming resolver configuration with array-ordered streamResolvers prioritizing arcod.xyz (single-stream without pre-probe, browser-aligned headers)",
   "streamResolvers": [
     {
       "id": "arcod-quality",
@@ -13,7 +13,9 @@
       "method": "GET",
       "headers": {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "application/json, text/plain, */*"
+        "Accept": "application/json, text/plain, */*",
+        "Referer": "https://arcod.xyz/",
+        "Origin": "https://arcod.xyz"
       },
       "responseType": "json",
       "urlJsonPath": "url|data.url|stream_url|download_url",
@@ -32,7 +34,9 @@
       "method": "GET",
       "headers": {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "application/json, text/plain, */*"
+        "Accept": "application/json, text/plain, */*",
+        "Referer": "https://arcod.xyz/",
+        "Origin": "https://arcod.xyz"
       },
       "responseType": "json",
       "urlJsonPath": "url|data.url|stream_url|download_url",
